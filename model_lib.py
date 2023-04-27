@@ -3,7 +3,7 @@ import torchvision
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.models.detection import FasterRCNN
 from torchvision.models.detection.rpn import AnchorGenerator
-from ultralytics import YOLO
+# from ultralytics import YOLO
 import os
 
 # parameter_size: n,s,m,l,x
@@ -24,17 +24,17 @@ def create_ultralytics_yolov5(num_classes, name=None, checkpoint_path=None, devi
         else:
             return torch.hub.load('ultralytics/yolov5', 'custom', os.path.join(checkpoint_path), device=device, force_reload=True)
     
-# parameter_size: n,s,m,l,x
-def create_ultralytics_yolov8(num_classes, name=None, checkpoint_path=None):
-    if checkpoint_path is None and name is not None:
-        parameters_size = name.split("8")[-1]
-        if parameters_size in ["n","s","m","l","x","x6"]:
-            return YOLO(f"yolov8{parameters_size}.pt")
-        else:
-            print(f"Parameter_size ({parameters_size}) for YOLOv8 not valid. Valid parameters_sizes are: 'n','s','m','l','x','x6'")
-            return None
-    else:        
-        return YOLO(os.path.join(checkpoint_path))
+# # parameter_size: n,s,m,l,x
+# def create_ultralytics_yolov8(num_classes, name=None, checkpoint_path=None):
+#     if checkpoint_path is None and name is not None:
+#         parameters_size = name.split("8")[-1]
+#         if parameters_size in ["n","s","m","l","x","x6"]:
+#             return YOLO(f"yolov8{parameters_size}.pt")
+#         else:
+#             print(f"Parameter_size ({parameters_size}) for YOLOv8 not valid. Valid parameters_sizes are: 'n','s','m','l','x','x6'")
+#             return None
+#     else:        
+#         return YOLO(os.path.join(checkpoint_path))
 
 def create_faster_rcnn_resnet50_fpn_custom_anchors(num_classes, anchorsizes = [32, 64, 128, 256, 512], scalesizes =[0.5, 1.0, 2.0]):
     backbone = torchvision.models.detection.backbone_utils.resnet_fpn_backbone('resnet50', True)

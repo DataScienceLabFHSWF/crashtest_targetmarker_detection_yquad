@@ -386,7 +386,7 @@ class TargetmarkerDetector():
         self.normalize = normalize_input
 
         self.models_dict = {"yolov5": models.create_ultralytics_yolov5,
-                            "yolov8": models.create_ultralytics_yolov8,
+                            #"yolov8": models.create_ultralytics_yolov8,
                             "faster_rcnn50": models.create_faster_rcnn_resnet50_fpn,
                             "fasterrcnn_resnet50_fpn": models.create_faster_rcnn_resnet50_fpn,
                             "fasterrcnn_resnet50_fpn_v2": models.create_faster_rcnn_resnet50_fpn_v2,
