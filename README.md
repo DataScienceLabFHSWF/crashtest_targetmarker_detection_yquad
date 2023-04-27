@@ -2,7 +2,9 @@
 
 ## 1. Create conda env/ install requirements
 `conda create env -n yquad python=3.9.* pip`
+
 `conda activate yquad`
+
 `pip install -r requirements.txt`
 
 ## 2. Edit video.cfg
