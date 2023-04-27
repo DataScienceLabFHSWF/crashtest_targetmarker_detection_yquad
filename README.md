@@ -10,7 +10,7 @@
 ## 2. Edit video.cfg
 This is the config file where input/output paths etc. have to be defined.
 
-The output directory will be created automatically if it does not already exist. More details to each parameter can be found in the config file itself.
+The output directory will be created automatically if it does not already exist. More details about each parameter can be found in the config file itself.
 
 ## 3. Run program
 `python process_video.py`
