@@ -140,20 +140,24 @@ def read_config(file_path:str = "video.cfg"):
     
     return params
 
-# def process_videos(input,output,model,detection_threshold, model_checkpoint_name, model_architecture, cuda_gpu_index):
-def process_videos(params: dict):
+def print_infos(params: dict, device: object):
     print("input directory: {}".format(params["INPUT_DIR"]))
     print("output directory: {}".format(params["OUTPUT_DIR"]))
     print("model weights path: {}".format(params["MODEL_CHECKPOINT_PATH"]))
     print("detection threshold: {}".format(params["MIN_PREDICTION_SCORE"]))
     print("model checkpoint: {}".format(params["MODEL_CHECKPOINT_PATH"].split(os.path.sep)[-1]))
     print("CUDA gpu index: {}".format(params["CUDA_GPU_INDEX"]))
-    print("video suffs: {}".format(params['VIDEO_SUFFIXES']))
+    print("video suffixes: {}".format(params['VIDEO_SUFFIXES']))
+    print("device: {}".format(device))
     print()
 
+    
+
+# def process_videos(input,output,model,detection_threshold, model_checkpoint_name, model_architecture, cuda_gpu_index):
+def process_videos(params: dict):
     htools.make_folders(params["OUTPUT_DIR"],"frames","csvs")
     print()
-
+    
     #
     # parameter for targetmarker class
     tm_confirm_delta_thresh = 10 #20 #35 #55
@@ -176,6 +180,9 @@ def process_videos(params: dict):
     vid_ops = htools.VideoOperations()
 
     video_files = [f for f in listdir(params["INPUT_DIR"]) if isfile(join(params["INPUT_DIR"], f)) and '.DS_Store' not in f]
+    
+    print_infos(params, device)
+    
     print("\nfound {} files: {}\n".format(len(video_files),video_files))
     
     # loop over all found filenames
