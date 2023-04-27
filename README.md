@@ -9,7 +9,8 @@ pip install -r requirements.txt
 
 
 ## 2. Edit video.cfg
-config file where input/output paths etc. have to be defined
+config file where input/output paths etc. have to be defined.
+Output directory will be created automatically if it does not already exist.
 
 ## 3. run program
 python process_video.py
