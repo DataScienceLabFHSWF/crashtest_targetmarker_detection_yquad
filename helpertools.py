@@ -482,8 +482,9 @@ class YQUADMarkerDetectorYOLOv5(TargetmarkerDetector):
         self.build_model()
         self.model.to(self.device).eval()
 
-    def detect(self, image):    
-        results = self.model([image]).xyxy[0].cpu().numpy()
+    def detect(self, image):
+        with torch.no_grad():    
+            results = self.model([image]).xyxy[0].cpu().numpy()
         
         selected_boxes_yquad = [[int(r[0]),int(r[1]),int(r[2]),int(r[3])] for r in results if r[4] > self.detection_threshold]
         selected_scores_yquad = [r[4] for r in results if r[4] > self.detection_threshold]
