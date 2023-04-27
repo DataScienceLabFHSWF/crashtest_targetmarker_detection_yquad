@@ -13,4 +13,4 @@ config file where input/output paths etc. have to be defined.
 Output directory will be created automatically if it does not already exist.
 
 ## 3. run program
-python process_video.py
+`python process_video.py`
